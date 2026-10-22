@@ -79,3 +79,7 @@ All attacks are harmless canary instructions run against a local stub. No real s
 - `attacks/`: the injected documents
 - `results_gate_off.csv`, `results_gate_on.csv`: raw results
 - `.env.example`: template for your API settings
+
+## Results
+
+Pilot: 5 injection styles plus a clean control, 3 runs each, on gpt-oss-20b and gpt-oss-120b (Groq), with the approval gate off and on (72 runs, ~67k tokens). The simulated agent tried the attacker's tool call in 54/60 attack runs and 0/12 clean runs. Gate-off, 21/30 attacker calls executed (the rest were malformed calls rejected by the API or non-attempts). Gate-on, 0/30 executed, because the gate blocks by construction. The larger model was not more resistant (27/30 vs 27/30). Limitations: 3 runs per cell, two models of one family, default temperature, and a simulated tool. Counts are small, so differences between attack styles are observations, not conclusions.
